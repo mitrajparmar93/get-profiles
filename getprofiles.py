@@ -30,8 +30,8 @@ vernum = (str(f5version).split(".", 1)[0])
 
 # Get the profile data
 
-with open('/home/parmarm0/scripts/f5profiles/profilescope', 'r') as f, \
-        open('/home/parmarm0/scripts/f5profiles/temp', 'w') as w:
+with open('/mnt/e/Git/get-profiles/profilescope', 'r') as f, \
+        open('/mnt/e/Git/get-profiles/temp', 'w') as w:
     w.write('[\n')
     for line in f.readlines():
         prftype, prfname = line.split()
@@ -51,7 +51,7 @@ with open('/home/parmarm0/scripts/f5profiles/profilescope', 'r') as f, \
     regex = r"(\,\n\])"
     subst = "\\n]"
 
-with open('/home/parmarm0/scripts/f5profiles/temp', 'r') as regexdata, \
-        open('/home/parmarm0/scripts/f5profiles/v'+vernum+'/profiledata.json', 'w') as regexwrite:
+with open('/mnt/e/Git/get-profiles/temp', 'r') as regexdata, \
+        open('/mnt/e/Git/get-profiles/v'+vernum+'/profiledata.json', 'w') as regexwrite:
     result = re.sub(regex, subst, regexdata.read(), flags=re.M)
     regexwrite.write(result)
